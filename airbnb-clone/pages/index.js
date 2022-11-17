@@ -1,8 +1,53 @@
 import Head from "next/head";
+import { useState } from "react";
 import Banner from "../components/Banner";
 import Header from "../components/Header";
+import SmallCard from "../components/SmallCard";
 
 export default function Home() {
+  const [exploreData, setExploreData] = useState([
+    {
+      img: "http://source.unsplash.com/1",
+      location: "London",
+      distance: "45-minute drive",
+    },
+    {
+      img: "http://source.unsplash.com/random",
+      location: "Liverpool",
+      distance: "45-minute drive",
+    },
+    {
+      img: "http://source.unsplash.com/1",
+      location: "Cardiff",
+      distance: "45-minute drive",
+    },
+    {
+      img: "http://source.unsplash.com/random",
+      location: "Newquay",
+      distance: "45-minute drive",
+    },
+    {
+      img: "http://source.unsplash.com/1",
+      location: "Birkenhead",
+      distance: "45-minute drive",
+    },
+    {
+      img: "http://source.unsplash.com/random",
+      location: "York",
+      distance: "45-minute drive",
+    },
+    {
+      img: "http://source.unsplash.com/1",
+      location: "Manchester",
+      distance: "45-minute drive",
+    },
+    {
+      img: "http://source.unsplash.com/random",
+      location: "Hove",
+      distance: "45-minute drive",
+    },
+  ]);
+
   return (
     <div className="">
       <Head>
@@ -13,6 +58,21 @@ export default function Home() {
 
       <Header />
       <Banner />
+      <main className="max-w-7xl mx-auto px-8 sm:px-16">
+        <section className="pt-6">
+          <h2 className="text-4xl font-semibold pb-5">Explore Nearby</h2>
+        </section>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {exploreData.map((item) => (
+            <SmallCard
+              key={item.location}
+              img={item.img}
+              distance={item.distance}
+              location={item.location}
+            />
+          ))}
+        </div>
+      </main>
     </div>
   );
 }
