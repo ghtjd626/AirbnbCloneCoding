@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useState } from "react";
 import Banner from "../components/Banner";
+import Footer from "../components/Footer";
 import Header from "../components/Header";
 import LargeCard from "../components/LargeCard";
 import MidiumCard from "../components/MidiumCard";
@@ -104,6 +105,8 @@ export default function Home() {
           buttonText="Get Inspired"
         />
       </main>
+
+      <Footer />
     </div>
   );
 }
