@@ -1,12 +1,28 @@
 import Image from "next/image";
+import { DateRangePicker } from "react-date-range";
+import { addDays } from "date-fns";
+import "react-date-range/dist/styles.css"; // main css file
+import "react-date-range/dist/theme/default.css"; // theme css file
 import {
   SearchIcon,
   MenuIcon,
   GlobeAltIcon,
   UserCircleIcon,
+  UserIcon,
 } from "@heroicons/react/solid";
+import { use, useState } from "react";
 
 function Header() {
+  const [searchInput, setSearchInput] = useState("");
+  const [selectionRange, setSelectionRange] = useState([
+    {
+      startDate: new Date(),
+      endDate: addDays(new Date(), 1),
+      key: "selection",
+    },
+  ]);
+  const [noOfGuests, setNoOfGuests] = useState("1");
+
   return (
     <header
       className="sticky top-0 z-50 grid 
@@ -25,6 +41,8 @@ function Header() {
         py-2 md:shadow-sm"
       >
         <input
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
           className="flex-grow pl-5 bg-transparent outline-none
           text-sm text-gray-500 placeholder-gray-400"
           type="text"
@@ -44,6 +62,42 @@ function Header() {
           <UserCircleIcon className="h-6 cursor-pointer" />
         </div>
       </div>
+
+      {searchInput && (
+        <div className="flex flex-col col-span-3 mx-auto">
+          <DateRangePicker
+            onChange={(item) => setSelectionRange([item.selection])}
+            ranges={selectionRange}
+            rangeColors={["#FD5B61"]}
+            months={2}
+            direction="horizontal"
+          />
+          <div className="flex items-center border-b mb-4">
+            <h2 className="text-2xl flex-grow font-semibold">
+              Number of Guests
+            </h2>
+            <UserIcon className="h-5" />
+            <input
+              value={noOfGuests}
+              onChange={(e) => {
+                setNoOfGuests(e.target.value);
+              }}
+              type={"number"}
+              min={"1"}
+              className="outline-none w-12 pl-2 text-red-400"
+            />
+          </div>
+          <div className="flex text-lg ">
+            <button
+              className="flex-grow text-gray-500"
+              onClick={() => setSearchInput("")}
+            >
+              Cancel
+            </button>
+            <button className="flex-grow text-red-400">Search</button>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
