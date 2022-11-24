@@ -17,7 +17,7 @@ const InfoCard = ({
     <div
       className="flex py-7 px-2 
     cursor-pointer hover:opacity-80 hover:shadow-lg
-    transition duration-200 ease-out first:border-t rounded-2xl"
+    transition duration-200 ease-out first:border-t rounded-3xl"
     >
       <div
         className="relative h-24 w-40 md:h-52 md:w-80
@@ -27,7 +27,7 @@ const InfoCard = ({
           src={img}
           layout="fill"
           objectFit="cover"
-          className="rounded-xl"
+          className="rounded-2xl"
         />
       </div>
 
