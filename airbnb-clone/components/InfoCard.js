@@ -15,7 +15,7 @@ const InfoCard = ({
 }) => {
   return (
     <div
-      className="flex py-7 px-2 
+      className="flex py-7 px-2 mr-5 
     cursor-pointer hover:opacity-80 hover:shadow-lg
     transition duration-200 ease-out first:border-t rounded-3xl"
     >

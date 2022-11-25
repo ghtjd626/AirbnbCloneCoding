@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { format } from "date-fns";
 import InfoCard from "../components/InfoCard";
+import Map from "../components/Map";
 
 const search = ({ searchResults }) => {
   const router = useRouter();
@@ -16,7 +17,6 @@ const search = ({ searchResults }) => {
   return (
     <div>
       <Header placeholder={`${location} | ${range} | ${noOfGuests} guests`} />
-
       <main className="flex pt-14 px-6">
         <section>
           <p className=" text-xs">
@@ -52,6 +52,10 @@ const search = ({ searchResults }) => {
               )
             )}
           </div>
+        </section>
+
+        <section className="hidden xl:inline-flex xl:min-w-[600px]">
+          <Map searchResults={searchResults} />
         </section>
       </main>
 
