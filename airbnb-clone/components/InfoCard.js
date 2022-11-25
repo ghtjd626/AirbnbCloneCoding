@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import { HeartIcon } from "@heroicons/react/outline";
 import { StarIcon } from "@heroicons/react/solid";
-import { ST } from "next/dist/shared/lib/utils";
 
 const InfoCard = ({
   img,
